@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -22,10 +23,6 @@ body {
     color: white;
     overflow-x: hidden;
 }
-
-/* =========================
-   ARKA PLAN
-========================= */
 
 body::before,
 body::after {
@@ -62,10 +59,6 @@ body::after {
         transform: translate(80px, 50px);
     }
 }
-
-/* =========================
-   NAVBAR
-========================= */
 
 nav {
     position: fixed;
@@ -114,10 +107,6 @@ nav a {
 nav a:hover {
     color: #a855f7;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .hero {
     min-height: 100vh;
@@ -175,6 +164,7 @@ nav a:hover {
     border-radius: 12px;
     font-weight: bold;
     transition: 0.3s;
+    display: inline-block;
 }
 
 .btn-primary {
@@ -199,10 +189,6 @@ nav a:hover {
     border-color: #8b5cf6;
 }
 
-/* =========================
-   GENEL BÖLÜMLER
-========================= */
-
 section {
     padding: 100px 7%;
 }
@@ -220,10 +206,6 @@ section {
 .section-title p {
     color: #888;
 }
-
-/* =========================
-   OYUNLAR
-========================= */
 
 .games {
     display: grid;
@@ -318,9 +300,22 @@ section {
     border: 1px solid rgba(139,92,246,0.18);
 }
 
-/* =========================
-   HAKKIMIZDA
-========================= */
+.download-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 11px 18px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(124,58,237,0.5);
+}
 
 .about {
     max-width: 850px;
@@ -333,10 +328,6 @@ section {
     font-size: 18px;
     line-height: 1.8;
 }
-
-/* =========================
-   GÜNCELLEMELER
-========================= */
 
 .updates {
     max-width: 850px;
@@ -369,10 +360,6 @@ section {
     color: #999;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -383,10 +370,6 @@ footer {
 footer strong {
     color: #a78bfa;
 }
-
-/* =========================
-   ANİMASYON
-========================= */
 
 @keyframes heroAppear {
     from {
@@ -399,10 +382,6 @@ footer strong {
         transform: translateY(0) scale(1);
     }
 }
-
-/* =========================
-   TELEFON
-========================= */
 
 @media (max-width: 700px) {
 
@@ -447,7 +426,6 @@ footer strong {
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
 
     <a href="#anasayfa" class="nav-logo">
@@ -464,8 +442,6 @@ footer strong {
 
 </nav>
 
-
-<!-- HERO -->
 <section class="hero" id="anasayfa">
 
     <div class="hero-logo">
@@ -480,6 +456,7 @@ footer strong {
     </p>
 
     <div class="hero-buttons">
+
         <a href="#oyunlar" class="btn btn-primary">
             Oyunlarımızı Gör
         </a>
@@ -487,12 +464,11 @@ footer strong {
         <a href="#hakkimizda" class="btn btn-secondary">
             Biz Kimiz?
         </a>
+
     </div>
 
 </section>
 
-
-<!-- OYUNLAR -->
 <section id="oyunlar">
 
     <div class="section-title">
@@ -502,6 +478,35 @@ footer strong {
 
     <div class="games">
 
+        <!-- T-REX RUNNER -->
+        <div class="game-card">
+
+            <div class="game-icon">🦖</div>
+
+            <h3>T-Rex Runner</h3>
+
+            <p>
+                Engellerden kaç, mümkün olan en yüksek skoru yap
+                ve kendi rekorunu kır!
+            </p>
+
+            <div class="tags">
+                <span class="tag">UNITY</span>
+                <span class="tag">2D</span>
+                <span class="tag">PC</span>
+                <span class="tag">ANDROID</span>
+            </div>
+
+            <a
+                href="https://drive.google.com/file/d/1h-F7Qb8GwJeTMNNlY92b1KwKo1bgkOZV/view?usp=drive_link"
+                target="_blank"
+                class="download-btn">
+                💻 PC İndir
+            </a>
+
+        </div>
+
+        <!-- MINI JUMP -->
         <div class="game-card">
 
             <div class="game-icon">🟪</div>
@@ -521,7 +526,7 @@ footer strong {
 
         </div>
 
-
+        <!-- OTOBÜS -->
         <div class="game-card">
 
             <div class="game-icon">🚌</div>
@@ -541,7 +546,7 @@ footer strong {
 
         </div>
 
-
+        <!-- GELECEK PROJE -->
         <div class="game-card">
 
             <div class="game-icon">❓</div>
@@ -564,8 +569,6 @@ footer strong {
 
 </section>
 
-
-<!-- GELİŞTİRİLENLER -->
 <section id="gelistirilen">
 
     <div class="section-title">
@@ -577,12 +580,13 @@ footer strong {
 
         <div class="game-card">
 
-            <div class="game-icon">🟣</div>
+            <div class="game-icon">🦖</div>
 
-            <h3>Mini Jump</h3>
+            <h3>T-Rex Runner</h3>
 
             <p>
-                Unity ile geliştirdiğimiz ilk küçük oyun projemiz.
+                Unity ile geliştirdiğimiz 2D koşu oyunumuz.
+                PC ve Android sürümleri hazırlanıyor.
             </p>
 
             <div class="tags">
@@ -591,7 +595,6 @@ footer strong {
             </div>
 
         </div>
-
 
         <div class="game-card">
 
@@ -613,8 +616,6 @@ footer strong {
 
 </section>
 
-
-<!-- HAKKIMIZDA -->
 <section id="hakkimizda">
 
     <div class="section-title">
@@ -634,8 +635,6 @@ footer strong {
 
 </section>
 
-
-<!-- GÜNCELLEMELER -->
 <section id="guncellemeler">
 
     <div class="section-title">
@@ -646,27 +645,45 @@ footer strong {
     <div class="updates">
 
         <div class="update">
-            <small>04 EKİM 2026</small>
-            <h3>MATONby sitesi geliştiriliyor!</h3>
+
+            <small>07 EKİM 2026</small>
+
+            <h3>T-Rex Runner yayınlanıyor!</h3>
+
             <p>
-                Yeni stüdyo sitesi için tasarım çalışmalarına başladık.
+                İlk Unity oyunumuz PC ve Android için hazırlanıyor.
             </p>
+
         </div>
 
         <div class="update">
+
             <small>04 EKİM 2026</small>
+
+            <h3>MATONby sitesi geliştiriliyor!</h3>
+
+            <p>
+                Yeni stüdyo sitesi için tasarım çalışmalarına başladık.
+            </p>
+
+        </div>
+
+        <div class="update">
+
+            <small>04 EKİM 2026</small>
+
             <h3>Mini Jump geliştirilmeye başlandı.</h3>
+
             <p>
                 İlk Unity projemiz üzerinde çalışmaya başladık.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-
-<!-- FOOTER -->
 <footer>
 
     <p>
@@ -677,3 +694,4 @@ footer strong {
 
 </body>
 </html>
+```
