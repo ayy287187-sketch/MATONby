@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -39,7 +40,6 @@ body::after {
     opacity: 0.18;
     z-index: -2;
     animation: floatLight 9s infinite alternate ease-in-out;
-    pointer-events: none;
 }
 
 body::before {
@@ -59,6 +59,7 @@ body::after {
     from {
         transform: translate(0, 0);
     }
+
     to {
         transform: translate(80px, 50px);
     }
@@ -69,45 +70,44 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 76px;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 7%;
-    background: rgba(7, 5, 16, 0.88);
+    background: rgba(7, 5, 16, 0.78);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255,255,255,0.08);
     z-index: 1000;
 }
 
 .nav-logo {
-    flex: 0 0 145px;
     width: 145px;
     height: 55px;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .nav-logo img {
-    width: 100%;
-    height: 100%;
+    width: 145px;
+    height: 55px;
     object-fit: contain;
+    object-position: center;
     display: block;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 nav a {
     color: #ddd;
     text-decoration: none;
     font-size: 15px;
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
 nav a:hover {
@@ -121,13 +121,16 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 115px 20px 60px;
+    padding: 110px 20px 60px;
     position: relative;
 }
 
 .hero-logo {
     width: min(620px, 90vw);
     aspect-ratio: 16 / 9;
+    height: auto;
+    overflow: hidden;
+    border-radius: 18px;
     margin-bottom: 20px;
     animation: heroAppear 1s ease forwards;
 }
@@ -136,6 +139,7 @@ nav a:hover {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
     display: block;
 }
 
@@ -144,7 +148,6 @@ nav a:hover {
     margin-bottom: 18px;
     background: linear-gradient(90deg, #ffffff, #b98cff, #6d8cff);
     -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
 }
 
@@ -210,12 +213,11 @@ section {
 
 .section-title p {
     color: #888;
-    line-height: 1.7;
 }
 
 .games {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
     max-width: 1200px;
     margin: auto;
@@ -223,7 +225,6 @@ section {
 
 .game-card {
     position: relative;
-    min-width: 0;
     min-height: 290px;
     padding: 28px;
     border-radius: 20px;
@@ -252,11 +253,10 @@ section {
     right: -70px;
     top: -70px;
     transition: 0.4s;
-    pointer-events: none;
 }
 
 .game-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-10px) scale(1.02);
     border-color: rgba(139,92,246,0.65);
     box-shadow: 0 20px 50px rgba(0,0,0,0.35);
 }
@@ -310,7 +310,7 @@ section {
 
 .download-btn {
     display: inline-block;
-    margin: 18px 7px 0 0;
+    margin-top: 18px;
     padding: 11px 18px;
     border-radius: 10px;
     background: linear-gradient(135deg, #7c3aed, #2563eb);
@@ -366,7 +366,6 @@ section {
 
 .update p {
     color: #999;
-    line-height: 1.7;
 }
 
 footer {
@@ -385,33 +384,26 @@ footer strong {
         opacity: 0;
         transform: translateY(30px) scale(0.96);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
+
     nav {
         padding: 0 20px;
     }
 
-    nav ul {
-        gap: 14px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 700px) {
     nav {
         gap: 12px;
         padding: 0 14px;
     }
 
     nav ul {
+        display: flex;
         flex: 1;
         min-width: 0;
         gap: 14px;
@@ -431,7 +423,12 @@ footer strong {
     .nav-logo {
         flex: 0 0 88px;
         width: 88px;
+    }
+
+    .nav-logo img {
+        width: 88px;
         height: 55px;
+        object-fit: contain;
     }
 
     .hero {
@@ -439,7 +436,8 @@ footer strong {
     }
 
     .hero-logo {
-        width: min(520px, 92vw);
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
 
     .hero p {
@@ -453,24 +451,6 @@ footer strong {
     .section-title h2 {
         font-size: 30px;
     }
-
-    .game-card {
-        padding: 23px;
-    }
-
-    .about p {
-        font-size: 16px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
 }
 </style>
 </head>
@@ -478,7 +458,8 @@ footer strong {
 <body>
 
 <nav>
-    <a href="#anasayfa" class="nav-logo" aria-label="MATONby ana sayfa">
+
+    <a href="#anasayfa" class="nav-logo">
         <img src="logo.png" alt="MATONby Logo">
     </a>
 
@@ -490,6 +471,7 @@ footer strong {
         <li><a href="#guncellemeler">Haberler</a></li>
         <li><a href="#destek">Destek Ol</a></li>
     </ul>
+
 </nav>
 
 <section class="hero" id="anasayfa">
@@ -507,8 +489,15 @@ footer strong {
     </p>
 
     <div class="hero-buttons">
-        <a href="#oyunlar" class="btn btn-primary">Oyunlarımızı Gör</a>
-        <a href="#hakkimizda" class="btn btn-secondary">Geliştiriciyi Tanı</a>
+
+        <a href="#oyunlar" class="btn btn-primary">
+            Oyunlarımızı Gör
+        </a>
+
+        <a href="#hakkimizda" class="btn btn-secondary">
+            Geliştiriciyi Tanı
+        </a>
+
     </div>
 
 </section>
@@ -522,9 +511,13 @@ footer strong {
 
     <div class="games">
 
+        <!-- T-REX RUNNER -->
         <div class="game-card">
+
             <div class="game-icon">🦖</div>
+
             <h3>T-Rex Runner</h3>
+
             <p>
                 Engellerden kaç, mümkün olan en yüksek skoru yap
                 ve kendi rekorunu kır!
@@ -540,7 +533,6 @@ footer strong {
             <a
                 href="https://drive.google.com/file/d/1h-F7Qb8GwJeTMNNlY92b1KwKo1bgkOZV/view?usp=drive_link"
                 target="_blank"
-                rel="noopener noreferrer"
                 class="download-btn">
                 💻 PC İndir
             </a>
@@ -548,15 +540,19 @@ footer strong {
             <a
                 href="https://drive.google.com/file/d/1_f_DtkJOmQ37fktW6dDQqDDhluJk8HKp/view?usp=drive_link"
                 target="_blank"
-                rel="noopener noreferrer"
                 class="download-btn">
                 📱 Android İndir
             </a>
+
         </div>
 
+        <!-- MATONBY NIGHTSHIFT -->
         <div class="game-card">
+
             <div class="game-icon">🌙</div>
+
             <h3>MATONby Nightshift</h3>
+
             <p>
                 Gece vardiyasında dikkatli ol, kameraları takip et
                 ve korku dolu geceyi tamamlamaya çalış.
@@ -578,15 +574,22 @@ footer strong {
             </a>
 
             <a
-                href="MATONby-Nightshift-Android.apk"
+                href="https://drive.google.com/file/d/1H2R4_ik6eY-HGQYg40BJVCayDZc-DoHk/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="download-btn">
                 📱 Android APK İndir
             </a>
+
         </div>
 
+        <!-- MINI JUMP -->
         <div class="game-card">
+
             <div class="game-icon">🟪</div>
+
             <h3>Mini Jump</h3>
+
             <p>
                 Küçük ama eğlenceli bir platform oyunu.
                 Zıpla, engelleri aş ve bölümün sonuna ulaş.
@@ -597,25 +600,36 @@ footer strong {
                 <span class="tag">2D</span>
                 <span class="tag">GELİŞTİRİLİYOR</span>
             </div>
+
         </div>
 
+        <!-- OTOBÜS -->
         <div class="game-card">
+
             <div class="game-icon">🚌</div>
+
             <h3>İyi Otobüs, İyi Şoför</h3>
+
             <p>
                 Otobüs sürme ve ulaşım yönetimini bir araya getiren
                 kendi simülasyon projemiz.
             </p>
 
             <div class="tags">
+                <span class="tag">LÖVE2D</span>
                 <span class="tag">SİMÜLASYON</span>
                 <span class="tag">GELİŞTİRİLİYOR</span>
             </div>
+
         </div>
 
+        <!-- GELECEK PROJE -->
         <div class="game-card">
+
             <div class="game-icon">❓</div>
+
             <h3>Gelecek Proje</h3>
+
             <p>
                 Henüz açıklamadığımız yeni bir oyun fikri.
                 Yakında daha fazlası gelecek.
@@ -625,9 +639,11 @@ footer strong {
                 <span class="tag">GİZLİ</span>
                 <span class="tag">PLANLANIYOR</span>
             </div>
+
         </div>
 
     </div>
+
 </section>
 
 <section id="gelistirilen">
@@ -640,37 +656,29 @@ footer strong {
     <div class="games">
 
         <div class="game-card">
+
             <div class="game-icon">🦖</div>
+
             <h3>T-Rex Runner</h3>
+
             <p>
                 Unity ile geliştirdiğimiz 2D koşu oyunumuz.
-                PC ve Android sürümleri hazır.
+                PC ve Android sürümleri hazırlanıyor.
             </p>
 
             <div class="tags">
                 <span class="tag">UNITY</span>
-                <span class="tag">YAYINLANDI</span>
+                <span class="tag">AKTİF</span>
             </div>
+
         </div>
 
         <div class="game-card">
-            <div class="game-icon">🌙</div>
-            <h3>MATONby Nightshift</h3>
-            <p>
-                Korku oyunumuzun PC paketi hazırlandı.
-                Android sürümü için de indirme dosyası bulunuyor.
-            </p>
 
-            <div class="tags">
-                <span class="tag">UNITY</span>
-                <span class="tag">PC</span>
-                <span class="tag">ANDROID</span>
-            </div>
-        </div>
-
-        <div class="game-card">
             <div class="game-icon">🚌</div>
+
             <h3>İyi Otobüs, İyi Şoför</h3>
+
             <p>
                 Şimdilik beklemede olan otobüs simülasyonu projemiz.
             </p>
@@ -678,9 +686,11 @@ footer strong {
             <div class="tags">
                 <span class="tag">BEKLEMEDE</span>
             </div>
+
         </div>
 
     </div>
+
 </section>
 
 <section id="hakkimizda">
@@ -691,6 +701,7 @@ footer strong {
     </div>
 
     <div class="about">
+
         <p>
             Selam! Ben MATONby'nin kurucusu ve geliştiricisiyim.
             Şu anda oyunlarımı tek başıma geliştiriyorum: fikir buluyor,
@@ -704,6 +715,7 @@ footer strong {
             daha iyi oyunlar yapmayı öğreniyorum. MATONby'yi zamanla
             daha güzel oyunların buluştuğu bir markaya dönüştürmek istiyorum.
         </p>
+
     </div>
 
 </section>
@@ -722,7 +734,6 @@ footer strong {
             bana destek olabilirsin. Her geri bildirim, oyunları daha iyi
             hâle getirmeme yardımcı olur. Burada olduğun için teşekkürler!
         </p>
-
         <div class="hero-buttons">
             <a href="#oyunlar" class="btn btn-primary">Oyunları Keşfet</a>
             <a href="#guncellemeler" class="btn btn-secondary">Son Haberleri Gör</a>
@@ -741,53 +752,77 @@ footer strong {
     <div class="updates">
 
         <div class="update">
+
             <small>11 EKİM 2026</small>
+
             <h3>MATONby Nightshift için yeni adım!</h3>
+
             <p>
                 Nightshift'in PC paketi ve Android APK sürümü hazırlandı.
                 İndirme bağlantıları Oyunlar bölümüne eklendi.
             </p>
+
         </div>
 
         <div class="update">
+
             <small>11 EKİM 2026</small>
+
             <h3>MATONby bağımsız geliştirici yolculuğu</h3>
+
             <p>
                 MATONby projeleri şu anda tek kişi tarafından geliştiriliyor.
                 Yeni denemeler ve geliştirme notları burada paylaşılacak.
             </p>
+
         </div>
 
         <div class="update">
+
             <small>07 EKİM 2026</small>
-            <h3>T-Rex Runner yayınlandı!</h3>
+
+            <h3>T-Rex Runner yayınlanıyor!</h3>
+
             <p>
-                İlk Unity oyunumuzun PC ve Android sürümleri hazırlandı.
+                İlk Unity oyunumuz PC ve Android için hazırlanıyor.
             </p>
+
         </div>
 
         <div class="update">
+
             <small>04 EKİM 2026</small>
+
             <h3>MATONby sitesi geliştiriliyor!</h3>
+
             <p>
                 Yeni stüdyo sitesi için tasarım çalışmalarına başladık.
             </p>
+
         </div>
 
         <div class="update">
+
             <small>04 EKİM 2026</small>
+
             <h3>Mini Jump geliştirilmeye başlandı.</h3>
+
             <p>
-                Yeni bir oyun fikri üzerinde çalışmaya başladık.
+                İlk Unity projemiz üzerinde çalışmaya başladık.
             </p>
+
         </div>
 
     </div>
+
 </section>
 
 <footer>
-    <p>© 2026 <strong>MATONby</strong> — Game Studio</p>
-    <p style="margin-top: 8px;">Hayal et. Geliştir. Oyna.</p>
+
+    <p>
+        © 2026 <strong>MATONby</strong> — Game Studio
+    </p>
+
 </footer>
 
 </body>
