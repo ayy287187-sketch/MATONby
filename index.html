@@ -2,688 +2,426 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#100d20">
-    <meta name="description" content="MATONby bağımsız oyun geliştirme stüdyosu. Oyunları keşfet, gelişmeleri takip et ve bu yolculuğa katıl.">
-    <title>MATONby | Bağımsız Oyun Stüdyosu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0915">
+  <meta name="description" content="MATONby bağımsız oyun geliştirme stüdyosu. Oyunlarımızı keşfet, gelişmeleri takip et.">
+  <title>MATONby — Bağımsız Oyun Stüdyosu</title>
 
-    <style>
-        :root {
-            --bg: #100d20;
-            --bg-light: #17132b;
-            --card: #1c1833;
-            --purple: #9166ff;
-            --blue: #5278ff;
-            --text: #f7f5ff;
-            --muted: #b9b4d0;
-            --border: rgba(175, 150, 255, .2);
-        }
+  <style>
+    :root {
+      --bg: #0b0915;
+      --panel: #151126;
+      --panel2: #1d1733;
+      --purple: #9b7bff;
+      --pink: #e879f9;
+      --text: #f6f2ff;
+      --muted: #b4adc9;
+      --border: rgba(255,255,255,.1);
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 85px;
-        }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(ellipse at 50% 0%, #29204d 0%, transparent 50%),
-                var(--bg);
-            line-height: 1.7;
-        }
+    body {
+      background:
+        radial-gradient(ellipse at 15% 0%, rgba(116,72,220,.18), transparent 42%),
+        radial-gradient(ellipse at 95% 35%, rgba(219,75,235,.09), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1120px, 90%); margin: auto; }
 
-        button, a {
-            -webkit-tap-highlight-color: transparent;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,9,21,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
 
-        .container {
-            width: min(1120px, 90%);
-            margin: auto;
-        }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(16, 13, 32, .92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-        }
+    .logo {
+      font-size: 1.65rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
 
-        .navbar {
-            min-height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
+    .logo span { color: var(--purple); }
 
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
+    nav { display: flex; gap: 25px; flex-wrap: wrap; }
+    nav a { color: var(--muted); font-size: .94rem; transition: color .2s; }
+    nav a:hover { color: white; }
 
-        .logo span {
-            color: var(--purple);
-        }
+    .hero { padding: 105px 0 95px; }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            flex-wrap: wrap;
-        }
+    .eyebrow {
+      display: inline-block;
+      color: #d5c8ff;
+      background: rgba(155,123,255,.12);
+      border: 1px solid rgba(155,123,255,.3);
+      padding: 7px 13px;
+      border-radius: 100px;
+      font-size: .83rem;
+      margin-bottom: 22px;
+    }
 
-        .nav-links a {
-            color: var(--muted);
-            font-size: 14px;
-            transition: color .2s;
-        }
+    h1 {
+      max-width: 850px;
+      font-size: clamp(2.7rem, 7vw, 5.5rem);
+      line-height: 1.04;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
 
-        .nav-links a:hover {
-            color: white;
-        }
+    .gradient {
+      background: linear-gradient(100deg, #b9a5ff, #e879f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        .hero {
-            min-height: 540px;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            padding: 90px 0;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
 
-        .hero-content {
-            max-width: 850px;
-            margin: auto;
-            position: relative;
-            z-index: 1;
-        }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-        .eyebrow {
-            display: inline-block;
-            padding: 6px 14px;
-            margin-bottom: 22px;
-            border: 1px solid var(--border);
-            background: rgba(145, 102, 255, .1);
-            border-radius: 30px;
-            color: #c8b5ff;
-            font-size: 13px;
-            font-weight: 700;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border-radius: 12px;
+      font-weight: 750;
+      border: 1px solid var(--border);
+      transition: transform .2s, background .2s;
+    }
 
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 82px);
-            line-height: 1.1;
-            letter-spacing: -3px;
-            margin-bottom: 24px;
-        }
+    .btn:hover { transform: translateY(-2px); }
 
-        .gradient-text {
-            background: linear-gradient(100deg, #b99aff, #6f9bff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+    .btn-primary {
+      color: #100b20;
+      background: linear-gradient(100deg, #b7a1ff, #e879f9);
+      border: none;
+    }
 
-        .hero p {
-            max-width: 650px;
-            margin: 0 auto 30px;
-            color: var(--muted);
-            font-size: 18px;
-        }
+    .btn-secondary { background: rgba(255,255,255,.04); }
+    section { padding: 76px 0; }
 
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 20px;
-            margin: 5px;
-            border: 1px solid var(--border);
-            border-radius: 11px;
-            background: linear-gradient(135deg, #8053e8, #496ce2);
-            color: white;
-            font-weight: 700;
-            transition: transform .2s, filter .2s;
-            cursor: pointer;
-        }
+    .section-head { margin-bottom: 30px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -1px; }
+    .section-head p { color: var(--muted); margin-top: 8px; max-width: 650px; }
 
-        .button:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.15);
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
 
-        .button.secondary {
-            background: rgba(255,255,255,.04);
-        }
+    .card {
+      background: linear-gradient(145deg, rgba(29,23,51,.95), rgba(18,14,32,.95));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px;
+      min-width: 0;
+      transition: transform .2s, border-color .2s;
+    }
 
-        .section {
-            padding: 75px 0;
-        }
+    .card:hover { transform: translateY(-4px); border-color: rgba(155,123,255,.45); }
 
-        .section-heading {
-            margin-bottom: 32px;
-        }
+    .game-art {
+      height: 150px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 3.7rem;
+      margin-bottom: 20px;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(232,121,249,.23), transparent 40%),
+        linear-gradient(135deg, #30204e, #171226);
+      border: 1px solid rgba(255,255,255,.06);
+    }
 
-        .section-heading .eyebrow {
-            margin-bottom: 12px;
-        }
+    .card h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); margin-bottom: 18px; }
+    .card .btn { margin: 4px 5px 0 0; }
 
-        .section-heading h2 {
-            font-size: clamp(29px, 5vw, 43px);
-            line-height: 1.2;
-            margin-bottom: 12px;
-        }
+    .tag {
+      display: inline-block;
+      font-size: .75rem;
+      color: #d6c8ff;
+      background: rgba(155,123,255,.12);
+      border-radius: 6px;
+      padding: 4px 8px;
+      margin-bottom: 12px;
+    }
 
-        .section-heading p {
-            color: var(--muted);
-            max-width: 680px;
-        }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-        }
+    .about-box, .stat-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
 
-        .game-card, .content-card {
-            min-width: 0;
-            padding: 27px;
-            border: 1px solid var(--border);
-            border-radius: 19px;
-            background: linear-gradient(145deg, rgba(35, 28, 62, .95), rgba(23, 19, 43, .95));
-            transition: border-color .2s, transform .2s;
-        }
+    .about-box p { color: var(--muted); margin-top: 12px; }
 
-        .game-card:hover, .content-card:hover {
-            border-color: rgba(166, 134, 255, .55);
-            transform: translateY(-3px);
-        }
+    .stat {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .game-icon {
-            width: 65px;
-            height: 65px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--border);
-            border-radius: 17px;
-            background: rgba(145, 102, 255, .13);
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
+    .stat:last-child { border-bottom: 0; }
+    .stat strong { display: block; font-size: 1.1rem; }
+    .stat span { color: var(--muted); font-size: .92rem; }
 
-        .game-card h3, .content-card h3 {
-            font-size: 23px;
-            margin-bottom: 10px;
-        }
+    .update {
+      display: flex;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .game-card p, .content-card p {
-            color: var(--muted);
-            margin-bottom: 18px;
-        }
+    .update:last-child { border-bottom: 0; }
+    .update-icon {
+      flex: 0 0 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(155,123,255,.14);
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+    }
 
-        .tags {
-            display: flex;
-            gap: 7px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
+    .update p { color: var(--muted); margin-top: 4px; }
+    .support-card { text-align: center; padding: 38px; }
+    .support-card p { max-width: 650px; margin: 10px auto 22px; }
 
-        .tag {
-            padding: 4px 10px;
-            font-size: 11px;
-            font-weight: 700;
-            color: #cdbdff;
-            background: rgba(145, 102, 255, .12);
-            border: 1px solid var(--border);
-            border-radius: 7px;
-        }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
 
-        .download-links {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 13px;
-            border: 1px solid var(--border);
-            border-radius: 9px;
-            background: rgba(255,255,255,.05);
-            font-size: 13px;
-            font-weight: 700;
-            transition: background .2s;
-        }
-
-        .download-btn:hover {
-            background: rgba(145, 102, 255, .22);
-        }
-
-        .status {
-            display: inline-block;
-            margin-bottom: 15px;
-            color: #bca7ff;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .about-panel {
-            padding: clamp(25px, 5vw, 48px);
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            background:
-                radial-gradient(ellipse at top right, rgba(111, 88, 210, .22), transparent 60%),
-                var(--bg-light);
-        }
-
-        .about-panel h2 {
-            font-size: clamp(29px, 5vw, 42px);
-            margin-bottom: 18px;
-        }
-
-        .about-panel p {
-            max-width: 800px;
-            color: var(--muted);
-            margin-bottom: 16px;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .news-date {
-            color: #bba5ff;
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .support-panel {
-            text-align: center;
-            padding: clamp(28px, 6vw, 55px);
-            border-radius: 22px;
-            border: 1px solid var(--border);
-            background: linear-gradient(135deg, rgba(110, 67, 190, .24), rgba(50, 81, 174, .2));
-        }
-
-        .support-panel h2 {
-            font-size: clamp(28px, 5vw, 42px);
-            margin-bottom: 15px;
-        }
-
-        .support-panel p {
-            max-width: 700px;
-            margin: 0 auto 22px;
-            color: var(--muted);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        footer {
-            margin-top: 30px;
-            padding: 35px 0;
-            border-top: 1px solid var(--border);
-            background: rgba(0,0,0,.12);
-        }
-
-        .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        footer p, .footer-links a {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 760px) {
-            .navbar {
-                padding: 15px 0;
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .nav-links {
-                gap: 10px 17px;
-            }
-
-            .hero {
-                min-height: 470px;
-                padding: 65px 0;
-            }
-
-            .hero h1 {
-                letter-spacing: -1.5px;
-            }
-
-            .games-grid, .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 55px 0;
-            }
-
-            .game-card, .content-card {
-                padding: 22px;
-            }
-        }
-    </style>
+    @media (max-width: 700px) {
+      .nav { padding: 14px 0; align-items: flex-start; flex-direction: column; gap: 10px; }
+      nav { gap: 14px; }
+      .hero { padding: 75px 0 55px; }
+      h1 { letter-spacing: -1.5px; }
+      section { padding: 54px 0; }
+      .grid, .about-layout { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      .support-card { padding: 25px; }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div class="container navbar">
-            <a class="logo" href="#anasayfa">MATON<span>by</span></a>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#anasayfa">MATON<span>by</span></a>
+      <nav aria-label="Ana menü">
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#oyunlar">Oyunlar</a>
+        <a href="#hakkimda">Hakkımda</a>
+        <a href="#haberler">Gelişmeler</a>
+        <a href="#destek">Destek</a>
+      </nav>
+    </div>
+  </header>
 
-            <nav class="nav-links" aria-label="Ana menü">
-                <a href="#anasayfa">Ana Sayfa</a>
-                <a href="#oyunlar">Oyunlar</a>
-                <a href="#projeler">Projeler</a>
-                <a href="#hakkimda">Hakkımda</a>
-                <a href="#haberler">Haberler</a>
-                <a href="#destek">Destek Ol</a>
-            </nav>
+  <main>
+    <section class="hero" id="anasayfa">
+      <div class="container">
+        <span class="eyebrow">🎮 Bağımsız oyun geliştirme</span>
+        <h1>Fikirlerden oyunlara.<br><span class="gradient">Her şey MATONby ile.</span></h1>
+        <p>
+          Merhaba! MATONby benim bağımsız oyun geliştirme markam.
+          Kendi oyunlarımı geliştiriyor, yeni fikirler deniyor ve projelerimi
+          oyuncularla buluşturuyorum.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#oyunlar">Oyunları keşfet ↘</a>
+          <a class="btn btn-secondary" href="#hakkimda">Stüdyoyu tanı</a>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- ANA SAYFA -->
-        <section class="hero" id="anasayfa">
-            <div class="container hero-content">
-                <span class="eyebrow">BAĞIMSIZ OYUN GELİŞTİRME</span>
-                <h1>Hayallerimi <span class="gradient-text">oyunlara</span> dönüştürüyorum.</h1>
-                <p>
-                    Burası MATONby. Yeni fikirlerin oyunlara dönüştüğü,
-                    projelerin adım adım geliştiği bağımsız oyun geliştirme
-                    yolculuğuma hoş geldin!
-                </p>
-                <a class="button" href="#oyunlar">🎮 Oyunları keşfet</a>
-                <a class="button secondary" href="#hakkimda">Ben kimim?</a>
-            </div>
-        </section>
-
-        <!-- OYUNLAR -->
-        <section class="section" id="oyunlar">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">OYUN KÜTÜPHANESİ</span>
-                    <h2>Oyunlarım 🎮</h2>
-                    <p>
-                        MATONby tarafından geliştirilen oyunları keşfet.
-                        İndirme bağlantıları üzerinden oyunları deneyebilirsin.
-                    </p>
-                </div>
-
-                <div class="games-grid">
-                    <!-- T-REX RUNNER -->
-                    <article class="game-card">
-                        <div class="game-icon">🦖</div>
-                        <h3>MATONby T-Rex Runner</h3>
-                        <p>
-                            Engelleri aş, koşmaya devam et ve kendi rekorunu
-                            kırmaya çalış!
-                        </p>
-                        <div class="tags">
-                            <span class="tag">UNITY</span>
-                            <span class="tag">KOŞU</span>
-                            <span class="tag">PC</span>
-                            <span class="tag">ANDROID</span>
-                        </div>
-                        <div class="download-links">
-                            <a class="download-btn"
-                               href="https://drive.google.com/file/d/1h-F7Qb8GwJeTMNNlY92b1KwKo1bgkOZV/view?usp=drive_link"
-                               target="_blank" rel="noopener noreferrer">
-                                💻 PC İndir
-                            </a>
-                            <a class="download-btn"
-                               href="https://drive.google.com/file/d/1_f_DtkJOmQ37fktW6dDQqDDhluJk8HKp/view?usp=drive_link"
-                               target="_blank" rel="noopener noreferrer">
-                                📱 Android İndir
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- NIGHTSHIFT -->
-                    <article class="game-card">
-                        <div class="game-icon">🌙</div>
-                        <h3>MATONby Nightshift</h3>
-                        <p>
-                            Gece boyunca dikkatini koru, çevreni takip et
-                            ve geceyi tamamlamaya çalış.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">UNITY</span>
-                            <span class="tag">KORKU</span>
-                            <span class="tag">PC</span>
-                            <span class="tag">ANDROID</span>
-                        </div>
-                        <div class="download-links">
-                            <a class="download-btn"
-                               href="https://drive.google.com/file/d/193I0D_bgjk8bpLnfFNj7j3rVIYbmP-Dm/view?usp=sharing"
-                               target="_blank" rel="noopener noreferrer">
-                                💻 PC ZIP İndir
-                            </a>
-                            <a class="download-btn"
-                               href="MATONby-Nightshift-Android.apk"
-                               download>
-                                📱 Android APK İndir
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- MINI JUMP -->
-                    <article class="game-card">
-                        <div class="game-icon">🟪</div>
-                        <h3>Mini Jump</h3>
-                        <p>
-                            Küçük ama eğlenceli bir oyun deneyimi.
-                            Yeni gelişmeler için takipte kal!
-                        </p>
-                        <div class="tags">
-                            <span class="tag">PLATFORM</span>
-                            <span class="tag">PROJE</span>
-                        </div>
-                        <span class="status">MATONby OYUN KOLEKSİYONU</span>
-                    </article>
-
-                    <!-- İYİ OTOBÜS -->
-                    <article class="game-card">
-                        <div class="game-icon">🚌</div>
-                        <h3>İyi Otobüs, İyi Şoför</h3>
-                        <p>
-                            Otobüs sürüşü ve ulaşım üzerine geliştirilen
-                            simülasyon projesi.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">SİMÜLASYON</span>
-                            <span class="tag">PROJE</span>
-                        </div>
-                        <span class="status">GELİŞTİRME FİKİRLERİ</span>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJELER -->
-        <section class="section" id="projeler">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">YARATICILIK ATÖLYESİ</span>
-                    <h2>Geliştirilen Projeler</h2>
-                    <p>
-                        Her proje yeni bir deneyim ve öğrenme fırsatı.
-                        Yeni oyun fikirleri olgunlaştıkça burada yer alacak.
-                    </p>
-                </div>
-
-                <div class="projects-grid">
-                    <article class="content-card">
-                        <h3>🎮 Yeni oyun fikirleri</h3>
-                        <p>
-                            Farklı türlerde oyunlar tasarlıyor, fikirleri
-                            oynanabilir projelere dönüştürmeye çalışıyorum.
-                        </p>
-                    </article>
-
-                    <article class="content-card">
-                        <h3>🛠️ Geliştirme süreci</h3>
-                        <p>
-                            Kodlama, oyun mekanikleri, arayüz ve test
-                            aşamalarında yeni şeyler öğreniyorum.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- HAKKIMDA -->
-        <section class="section" id="hakkimda">
-            <div class="container">
-                <div class="about-panel">
-                    <span class="eyebrow">BU MARKANIN ARKASINDA KİM VAR?</span>
-                    <h2>Merhaba, ben MATONby! 👋</h2>
-                    <p>
-                        MATONby, oyun geliştirme hayalimi gerçeğe dönüştürmek
-                        için kurduğum bağımsız bir oyun markası.
-                    </p>
-                    <p>
-                        Bu yolculukta oyunlarımı tek başıma geliştiriyorum.
-                        Fikir üretmekten kod yazmaya, tasarımları denemekten
-                        hataları düzeltmeye kadar pek çok işi kendim yapıyorum.
-                    </p>
-                    <p>
-                        Her şey her zaman ilk denemede çalışmıyor. Bazen
-                        sorunları çözmem, bazen de öğrendiklerimle bir bölümü
-                        yeniden tasarlamam gerekiyor. Ama amacım her projede
-                        bir önceki adımdan daha ileri gitmek.
-                    </p>
-                    <p>
-                        MATONby henüz büyüme yolculuğunda. Senin gibi
-                        oyuncuların desteği, önerileri ve geri bildirimleri
-                        bu yolculuğu daha güzel hâle getirebilir.
-                    </p>
-                    <a class="button" href="#oyunlar">Oyunlarımı dene</a>
-                    <a class="button secondary" href="#destek">Destek ol</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- HABERLER -->
-        <section class="section" id="haberler">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="eyebrow">GÜNCELLEMELER</span>
-                    <h2>Haberler ve Son Gelişmeler 📰</h2>
-                    <p>
-                        Oyunların geliştirme sürecinden ve yeni projelerden
-                        haberdar ol.
-                    </p>
-                </div>
-
-                <div class="news-grid">
-                    <article class="content-card">
-                        <p class="news-date">MATONby NIGHTSHIFT</p>
-                        <h3>PC ve Android sürümleri</h3>
-                        <p>
-                            Nightshift için PC paketi ve Android APK sürümü
-                            hazırlandı. İndirme bağlantılarını oyunlar
-                            bölümünde bulabilirsin.
-                        </p>
-                    </article>
-
-                    <article class="content-card">
-                        <p class="news-date">T-REX RUNNER</p>
-                        <h3>Koşu macerası devam ediyor</h3>
-                        <p>
-                            T-Rex Runner, MATONby oyun koleksiyonunun
-                            projelerinden biri olarak yerini koruyor.
-                        </p>
-                    </article>
-
-                    <article class="content-card">
-                        <p class="news-date">GELECEK PROJELER</p>
-                        <h3>Yeni fikirler yolda</h3>
-                        <p>
-                            MATONby için yeni oyun fikirleri üzerinde
-                            çalışılıyor. Kesinleşen yenilikler bu alanda
-                            paylaşılacak.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- DESTEK OL -->
-        <section class="section" id="destek">
-            <div class="container">
-                <div class="support-panel">
-                    <span class="eyebrow">BİRLİKTE DAHA İYİ</span>
-                    <h2>Bu yolculukta bana destek ol! 💜</h2>
-                    <p>
-                        MATONby'yi tek başıma geliştiriyorum. Oyunlarımı
-                        deneyerek, karşılaştığın hataları bildirerek ve
-                        projelerimi arkadaşlarınla paylaşarak bana yardımcı
-                        olabilirsin. Her geri bildirim gelişmeme katkı sağlar.
-                    </p>
-                    <a class="button" href="#oyunlar">Oyunları dene</a>
-                    <a class="button secondary" href="#haberler">Gelişmeleri takip et</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container footer-inner">
-            <a class="logo" href="#anasayfa">MATON<span>by</span></a>
-            <p>Bağımsız geliştiriliyor. Hayallerle büyüyor. © 2026 MATONby</p>
-            <div class="footer-links">
-                <a href="#oyunlar">Oyunlar</a>
-                <a href="#hakkimda">Hakkımda</a>
-                <a href="#haberler">Haberler</a>
-                <a href="#destek">Destek Ol</a>
-            </div>
+    <section id="oyunlar">
+      <div class="container">
+        <div class="section-head">
+          <h2>Oyunlarımız</h2>
+          <p>MATONby projeleri. Bir oyunu seç, indir ve deneyimle.</p>
         </div>
-    </footer>
+
+        <div class="grid">
+          <article class="card">
+            <div class="game-art" aria-hidden="true">🦖</div>
+            <span class="tag">PC · Android</span>
+            <h3>T-Rex Runner</h3>
+            <p>Engelleri aş, zıpla ve kendi rekorunu kır. MATONby'nin koşu oyunu.</p>
+            <a class="btn btn-secondary" href="https://drive.google.com/file/d/1h-F7Qb8GwJeTMNNlY92b1KwKo1bgkOZV/view?usp=drive_link" target="_blank" rel="noopener">PC sürümü</a>
+            <a class="btn btn-primary" href="https://drive.google.com/file/d/1_f_DtkJOmQ37fktW6dDQqDDhluJk8HKp/view?usp=drive_link" target="_blank" rel="noopener">Android APK</a>
+          </article>
+
+          <article class="card">
+            <div class="game-art" aria-hidden="true">🌙</div>
+            <span class="tag">PC · Android</span>
+            <h3>Nightshift</h3>
+            <p>Nightshift projesini indirip dene. İndirme bağlantılarını aşağıdan kullan.</p>
+            <a class="btn btn-primary" href="https://drive.google.com/file/d/193I0D_bgjk8bpLnfFNj7j3rVIYbmP-Dm/view?usp=drive_link" target="_blank" rel="noopener">PC ZIP indir</a>
+            <!-- Android APK bağlantısını APK'nın erişilebilir olduğu konum belli olduğunda ekle. -->
+            <a class="btn btn-secondary" href="#destek">Android sürümü hakkında</a>
+          </article>
+
+          <article class="card">
+            <div class="game-art" aria-hidden="true">🕹️</div>
+            <span class="tag">Mini oyun</span>
+            <h3>Mini Jump</h3>
+            <p>Kısa, eğlenceli ve reflekslere dayalı mini oyun projesi.</p>
+            <span class="btn btn-secondary">Geliştirme aşamasında</span>
+          </article>
+
+          <article class="card">
+            <div class="game-art" aria-hidden="true">🚌</div>
+            <span class="tag">Simülasyon</span>
+            <h3>İyi Otobüs, İyi Şoför</h3>
+            <p>Otobüs ve sürüş simülasyonu fikri üzerine geliştirilen proje.</p>
+            <span class="btn btn-secondary">Geliştirme aşamasında</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hakkimda">
+      <div class="container">
+        <div class="section-head">
+          <h2>MATONby hakkında</h2>
+          <p>Bağımsız geliştirici. Büyük fikirler, küçük adımlar ve sürekli gelişim.</p>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-box">
+            <h3>Tek kişilik bir geliştirme yolculuğu</h3>
+            <p>
+              MATONby, oyun geliştirmeyi öğrenirken kendi projelerimi ortaya
+              çıkarmak için kurduğum bağımsız markadır. Oyun fikirlerinden
+              oynanabilir sürümlere kadar her projede yeni şeyler öğreniyorum.
+            </p>
+            <p>
+              Amacım yalnızca oyun yapmak değil; zamanla daha kaliteli,
+              eğlenceli ve farklı platformlarda oynanabilen deneyimler üretmek.
+            </p>
+          </div>
+          <div class="stat-box">
+            <div class="stat">
+              <strong>Bağımsız geliştirme</strong>
+              <span>Projelerimi kendim geliştiriyorum.</span>
+            </div>
+            <div class="stat">
+              <strong>PC ve Android</strong>
+              <span>Birden fazla platform için oyun hedefi.</span>
+            </div>
+            <div class="stat">
+              <strong>Sürekli gelişim</strong>
+              <span>Her projede yeni özellikler ve deneyimler.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="haberler">
+      <div class="container">
+        <div class="section-head">
+          <h2>Son gelişmeler</h2>
+          <p>Projelerdeki yenilikler ve geliştirme sürecinden haberler.</p>
+        </div>
+
+        <div class="card">
+          <div class="update">
+            <div class="update-icon">🦖</div>
+            <div>
+              <h3>T-Rex Runner yayın hazırlıkları</h3>
+              <p>PC ve Android sürümleri için indirme bağlantıları hazırlandı.</p>
+            </div>
+          </div>
+          <div class="update">
+            <div class="update-icon">🌙</div>
+            <div>
+              <h3>Nightshift</h3>
+              <p>PC ZIP sürümü paylaşım bağlantısı üzerinden erişilebilir.</p>
+            </div>
+          </div>
+          <div class="update">
+            <div class="update-icon">🛠️</div>
+            <div>
+              <h3>Yeni projeler yolda</h3>
+              <p>MATONby projeleri geliştikçe bu bölüm güncellenecek.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="destek">
+      <div class="container">
+        <div class="card support-card">
+          <span class="eyebrow">💜 Bağımsız geliştiriciye destek</span>
+          <h2>Bir sorun mu buldun?</h2>
+          <p>
+            Oyunlarla ilgili görüşlerini, karşılaştığın hataları veya yeni
+            fikirlerini paylaşabilirsin. Geri bildirimler projelerin gelişmesine yardımcı olur.
+          </p>
+          <a class="btn btn-primary" href="https://github.com/ayy287187-sketch/MATONby/issues" target="_blank" rel="noopener">GitHub üzerinden geri bildirim gönder</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#anasayfa">MATON<span>by</span></a>
+      <p>© <span id="year"></span> MATONby · Bağımsız oyun geliştirme</p>
+      <a href="https://github.com/ayy287187-sketch/MATONby" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
