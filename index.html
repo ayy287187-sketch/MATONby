@@ -59,7 +59,6 @@ body::after {
     from {
         transform: translate(0, 0);
     }
-
     to {
         transform: translate(80px, 50px);
     }
@@ -87,6 +86,7 @@ nav {
     overflow: hidden;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .nav-logo img {
@@ -213,6 +213,7 @@ section {
 
 .section-title p {
     color: #888;
+    line-height: 1.6;
 }
 
 .games {
@@ -253,6 +254,7 @@ section {
     right: -70px;
     top: -70px;
     transition: 0.4s;
+    pointer-events: none;
 }
 
 .game-card:hover {
@@ -310,7 +312,7 @@ section {
 
 .download-btn {
     display: inline-block;
-    margin-top: 18px;
+    margin: 18px 6px 0 0;
     padding: 11px 18px;
     border-radius: 10px;
     background: linear-gradient(135deg, #7c3aed, #2563eb);
@@ -318,6 +320,8 @@ section {
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+    position: relative;
+    z-index: 1;
 }
 
 .download-btn:hover {
@@ -366,6 +370,7 @@ section {
 
 .update p {
     color: #999;
+    line-height: 1.7;
 }
 
 footer {
@@ -384,7 +389,6 @@ footer strong {
         opacity: 0;
         transform: translateY(30px) scale(0.96);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -392,11 +396,6 @@ footer strong {
 }
 
 @media (max-width: 700px) {
-
-    nav {
-        padding: 0 20px;
-    }
-
     nav {
         gap: 12px;
         padding: 0 14px;
@@ -451,6 +450,10 @@ footer strong {
     .section-title h2 {
         font-size: 30px;
     }
+
+    .game-card {
+        padding: 24px;
+    }
 }
 </style>
 </head>
@@ -458,7 +461,6 @@ footer strong {
 <body>
 
 <nav>
-
     <a href="#anasayfa" class="nav-logo">
         <img src="logo.png" alt="MATONby Logo">
     </a>
@@ -471,11 +473,9 @@ footer strong {
         <li><a href="#guncellemeler">Haberler</a></li>
         <li><a href="#destek">Destek Ol</a></li>
     </ul>
-
 </nav>
 
 <section class="hero" id="anasayfa">
-
     <div class="hero-logo">
         <img src="logo.png" alt="MATONby Game Studio">
     </div>
@@ -489,21 +489,12 @@ footer strong {
     </p>
 
     <div class="hero-buttons">
-
-        <a href="#oyunlar" class="btn btn-primary">
-            Oyunlarımızı Gör
-        </a>
-
-        <a href="#hakkimizda" class="btn btn-secondary">
-            Geliştiriciyi Tanı
-        </a>
-
+        <a href="#oyunlar" class="btn btn-primary">Oyunlarımızı Gör</a>
+        <a href="#hakkimizda" class="btn btn-secondary">Geliştiriciyi Tanı</a>
     </div>
-
 </section>
 
 <section id="oyunlar">
-
     <div class="section-title">
         <h2>🎮 Oyunlarımız</h2>
         <p>Geliştirdiğimiz ve geliştireceğimiz oyunlar.</p>
@@ -513,9 +504,7 @@ footer strong {
 
         <!-- T-REX RUNNER -->
         <div class="game-card">
-
             <div class="game-icon">🦖</div>
-
             <h3>T-Rex Runner</h3>
 
             <p>
@@ -533,6 +522,7 @@ footer strong {
             <a
                 href="https://drive.google.com/file/d/1h-F7Qb8GwJeTMNNlY92b1KwKo1bgkOZV/view?usp=drive_link"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="download-btn">
                 💻 PC İndir
             </a>
@@ -540,17 +530,15 @@ footer strong {
             <a
                 href="https://drive.google.com/file/d/1_f_DtkJOmQ37fktW6dDQqDDhluJk8HKp/view?usp=drive_link"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="download-btn">
                 📱 Android İndir
             </a>
-
         </div>
 
         <!-- MATONBY NIGHTSHIFT -->
         <div class="game-card">
-
             <div class="game-icon">🌙</div>
-
             <h3>MATONby Nightshift</h3>
 
             <p>
@@ -580,14 +568,46 @@ footer strong {
                 class="download-btn">
                 📱 Android APK İndir
             </a>
+        </div>
 
+        <!-- CAPY SLIDE -->
+        <div class="game-card">
+            <div class="game-icon">🛷</div>
+            <h3>Capy Slide</h3>
+
+            <p>
+                Karlı dağlarda ve farklı parkurlarda kızağını sür,
+                hızını kontrol et ve yeni kızaklarla yarışın keyfini çıkar!
+            </p>
+
+            <div class="tags">
+                <span class="tag">UNITY</span>
+                <span class="tag">YARIŞ</span>
+                <span class="tag">PC</span>
+                <span class="tag">ANDROID</span>
+                <span class="tag">YENİ OYUN</span>
+            </div>
+
+            <a
+                href="https://drive.google.com/file/d/1dPLWzsJX1spDSCRHlLXnl6SAMQn_mqLZ/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="download-btn">
+                💻 PC İndir
+            </a>
+
+            <a
+                href="https://drive.google.com/file/d/14MUW1vzU7PvsJyG8dG-N7cQcCuc2JjyA/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="download-btn">
+                📱 Android APK İndir
+            </a>
         </div>
 
         <!-- MINI JUMP -->
         <div class="game-card">
-
             <div class="game-icon">🟪</div>
-
             <h3>Mini Jump</h3>
 
             <p>
@@ -600,14 +620,11 @@ footer strong {
                 <span class="tag">2D</span>
                 <span class="tag">GELİŞTİRİLİYOR</span>
             </div>
-
         </div>
 
         <!-- OTOBÜS -->
         <div class="game-card">
-
             <div class="game-icon">🚌</div>
-
             <h3>İyi Otobüs, İyi Şoför</h3>
 
             <p>
@@ -620,63 +637,69 @@ footer strong {
                 <span class="tag">SİMÜLASYON</span>
                 <span class="tag">GELİŞTİRİLİYOR</span>
             </div>
-
-        </div>
-
-        <!-- GELECEK PROJE -->
-        <div class="game-card">
-
-            <div class="game-icon">❓</div>
-
-            <h3>Gelecek Proje</h3>
-
-            <p>
-                Henüz açıklamadığımız yeni bir oyun fikri.
-                Yakında daha fazlası gelecek.
-            </p>
-
-            <div class="tags">
-                <span class="tag">GİZLİ</span>
-                <span class="tag">PLANLANIYOR</span>
-            </div>
-
         </div>
 
     </div>
-
 </section>
 
 <section id="gelistirilen">
-
     <div class="section-title">
         <h2>🛠️ Geliştirilenler</h2>
-        <p>Şu anda üzerinde çalıştığımız projeler.</p>
+        <p>Oyun projelerimiz ve geliştirme durumları.</p>
     </div>
 
     <div class="games">
 
         <div class="game-card">
-
             <div class="game-icon">🦖</div>
-
             <h3>T-Rex Runner</h3>
 
             <p>
                 Unity ile geliştirdiğimiz 2D koşu oyunumuz.
-                PC ve Android sürümleri hazırlanıyor.
+                PC ve Android sürümleri bulunuyor.
             </p>
 
             <div class="tags">
                 <span class="tag">UNITY</span>
-                <span class="tag">AKTİF</span>
+                <span class="tag">PC</span>
+                <span class="tag">ANDROID</span>
             </div>
-
         </div>
 
         <div class="game-card">
+            <div class="game-icon">🌙</div>
+            <h3>MATONby Nightshift</h3>
 
+            <p>
+                Kamera takibi ve gece vardiyası üzerine kurulu
+                korku oyunumuz.
+            </p>
+
+            <div class="tags">
+                <span class="tag">UNITY</span>
+                <span class="tag">PC</span>
+                <span class="tag">ANDROID</span>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-icon">🛷</div>
+            <h3>Capy Slide</h3>
+
+            <p>
+                Kızak sürüş oyunumuz. PC ve Android sürümlerinin
+                indirme bağlantıları Oyunlar bölümünde.
+            </p>
+
+            <div class="tags">
+                <span class="tag">YAYINLANDI</span>
+                <span class="tag">PC</span>
+                <span class="tag">ANDROID</span>
+            </div>
+        </div>
+
+        <div class="game-card">
             <div class="game-icon">🚌</div>
-
             <h3>İyi Otobüs, İyi Şoför</h3>
 
             <p>
@@ -686,22 +709,18 @@ footer strong {
             <div class="tags">
                 <span class="tag">BEKLEMEDE</span>
             </div>
-
         </div>
 
     </div>
-
 </section>
 
 <section id="hakkimizda">
-
     <div class="section-title">
         <h2>👋 Geliştiriciyi Tanı</h2>
         <p>MATONby'nin arkasındaki kişi ve hayal.</p>
     </div>
 
     <div class="about">
-
         <p>
             Selam! Ben MATONby'nin kurucusu ve geliştiricisiyim.
             Şu anda oyunlarımı tek başıma geliştiriyorum: fikir buluyor,
@@ -715,13 +734,10 @@ footer strong {
             daha iyi oyunlar yapmayı öğreniyorum. MATONby'yi zamanla
             daha güzel oyunların buluştuğu bir markaya dönüştürmek istiyorum.
         </p>
-
     </div>
-
 </section>
 
 <section id="destek">
-
     <div class="section-title">
         <h2>💜 Bu Yolculukta Destek Ol</h2>
         <p>Bağımsız bir geliştiricinin en büyük desteği oyunculardır.</p>
@@ -734,16 +750,15 @@ footer strong {
             bana destek olabilirsin. Her geri bildirim, oyunları daha iyi
             hâle getirmeme yardımcı olur. Burada olduğun için teşekkürler!
         </p>
+
         <div class="hero-buttons">
             <a href="#oyunlar" class="btn btn-primary">Oyunları Keşfet</a>
             <a href="#guncellemeler" class="btn btn-secondary">Son Haberleri Gör</a>
         </div>
     </div>
-
 </section>
 
 <section id="guncellemeler">
-
     <div class="section-title">
         <h2>📰 Haberler ve Son Gelişmeler</h2>
         <p>MATONby projelerindeki yenilikleri buradan takip edebilirsin.</p>
@@ -752,77 +767,70 @@ footer strong {
     <div class="updates">
 
         <div class="update">
+            <small>17 EKİM 2026</small>
+            <h3>🛷 Capy Slide yayınlandı!</h3>
 
+            <p>
+                MATONby'nin yeni kızak sürüş oyunu Capy Slide'ın
+                PC ve Android indirme bağlantıları Oyunlar bölümüne eklendi.
+                İyi eğlenceler!
+            </p>
+        </div>
+
+        <div class="update">
             <small>11 EKİM 2026</small>
-
             <h3>MATONby Nightshift için yeni adım!</h3>
 
             <p>
                 Nightshift'in PC paketi ve Android APK sürümü hazırlandı.
                 İndirme bağlantıları Oyunlar bölümüne eklendi.
             </p>
-
         </div>
 
         <div class="update">
-
             <small>11 EKİM 2026</small>
-
             <h3>MATONby bağımsız geliştirici yolculuğu</h3>
 
             <p>
                 MATONby projeleri şu anda tek kişi tarafından geliştiriliyor.
                 Yeni denemeler ve geliştirme notları burada paylaşılacak.
             </p>
-
         </div>
 
         <div class="update">
-
             <small>07 EKİM 2026</small>
-
             <h3>T-Rex Runner yayınlanıyor!</h3>
 
             <p>
                 İlk Unity oyunumuz PC ve Android için hazırlanıyor.
             </p>
-
         </div>
 
         <div class="update">
-
             <small>04 EKİM 2026</small>
-
             <h3>MATONby sitesi geliştiriliyor!</h3>
 
             <p>
                 Yeni stüdyo sitesi için tasarım çalışmalarına başladık.
             </p>
-
         </div>
 
         <div class="update">
-
             <small>04 EKİM 2026</small>
-
             <h3>Mini Jump geliştirilmeye başlandı.</h3>
 
             <p>
                 İlk Unity projemiz üzerinde çalışmaya başladık.
             </p>
-
         </div>
 
     </div>
-
 </section>
 
 <footer>
-
     <p>
         © 2026 <strong>MATONby</strong> — Game Studio
     </p>
-
 </footer>
 
 </body>
